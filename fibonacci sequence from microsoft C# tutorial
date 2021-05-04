@@ -1,0 +1,37 @@
+//Fibonacci sequence is found by taking the sum of the previous two numbers.
+var index = new List<int> { 1, 1 };
+int HOWMANY = 20 // HOW MANY NUMBERS YOU WANT TO FIND
+Console.WriteLine();
+
+
+while (index.Count < HOWMANY){
+
+    var previous = index[index.Count - 1]; //location of first number,  which is the current index count - 1
+    Console.WriteLine($"Second index  {previous}");
+    var previous2 = index[index.Count - 2]; //location of second number, which is the current index count - 2
+    Console.WriteLine($"First index   {previous2}");
+
+    index.Add(previous + previous2); //then we'll add those two numbers we've found at these locations, and create and place their sum at the NEXT array location, which is at the end.
+} /* so if it's 5+10, we're not placing it at index[15], we're placing it at [index.counter+1]
+     through the use of index.add, which this method creates a new memory location at the end of the
+    referenced array. So it's confusing because it's doing two things at once. index.Add is basically doing this:
+         previousAdd = previous + previous2
+         index.Add(previousAdd)
+
+/* so after the first iteration,
+the index is now 3 long, and the
+third element in the array is 2,
+so it is now {1, 1, 2}. We then
+find the location of the first
+number, which is index.count(3)-1,
+so index(2) which is 2. Then we       <------ index{1, 1, 2}
+find the location of the second                    [0][1][2] <---- remember arrays/lists begin with 0
+number, which is index.count(3)-2,    <------ index{1, 1, 2}
+so index(1) which is 1. Now add                    [0][1][2] <---- we select index(1), which is 1
+2 and 1, and place it in the next
+array element. It is now {1, 1, 2, 3} <------ the index is larger, with the added of the 2 previous
+We then find the location of the
+first number, which is
+index.count(4)-1, so index(3)         <------ index{1, 1, 2, 3}
+which is 3.                                        [0][1][2][3]
+*/
